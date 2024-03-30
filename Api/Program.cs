@@ -2,6 +2,10 @@ using Api.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.Configure<RouteOptions>(options =>
+{
+   options.LowercaseUrls = true;
+});
 
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 

@@ -6,20 +6,20 @@ using Microsoft.EntityFrameworkCore;
 namespace Api.Controllers
 {
     [ApiController]
-    [Route("/")]
-    public class ApiController
+    [Route("[controller]")]
+    public class VehiclesController
     {
-        private readonly ILogger<ApiController> _logger;
+        private readonly ILogger<VehiclesController> _logger;
         private readonly ApiDbContext _context;
 
-        public ApiController(ILogger<ApiController> logger, ApiDbContext context)
+        public VehiclesController(ILogger<VehiclesController> logger, ApiDbContext context)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        [HttpGet("vehicles")]
-        public async IAsyncEnumerable<Messaging.Vehicle> GetVehicles()
+        [HttpGet]
+        public async IAsyncEnumerable<Messaging.Vehicle> Get()
         {
             var vehicles = _context.Vehicles
                 .OrderBy(v => v.Name)
