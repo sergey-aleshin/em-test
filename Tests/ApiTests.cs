@@ -11,12 +11,13 @@ namespace Tests
     public class ApiTests
     {
         public const string baseUrl = "https://localhost:7117/";
+        public const string insecureBaseUrl = "http://localhost:5007/";
 
         [Test]
         public async Task TestVehicles()
         {
             var client = new HttpClient();
-            var url = baseUrl + "vehicles";
+            var url = insecureBaseUrl + "vehicles";
             var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, url));
 
             Assert.That(response, Is.Not.Null);
