@@ -36,11 +36,7 @@ namespace Api.Controlers
             if (coordinates == null || coordinates.Length == 0)
                 return new Dictionary<string, VehicleStats>();
 
-            var result = coordinates
-                .GroupBy(v => v.VehicleName)
-                .ToDictionary(g => g.Key, g => new VehicleStats(0, 0));
-
-            return result;
+            return _coordinatesService.CalculatePath(coordinates);
         }
     }
 }
