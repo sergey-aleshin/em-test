@@ -9,7 +9,10 @@ builder.Services.Configure<RouteOptions>(options =>
 });
 
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
+
 builder.Services.AddScoped<ICoordinatesService, CoordinatesService>();
+builder.Services.AddScoped<IVehiclesService, VehiclesService>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
