@@ -23,7 +23,8 @@ namespace Api.Controllers
         {
             var vehicles = _context.Vehicles
                 .OrderBy(v => v.Name)
-                .Select(v => new Messaging.Vehicle(v.Id, v.Name)).AsAsyncEnumerable();
+                .Select(v => new Messaging.Vehicle(v.Id, v.Name))
+                .AsAsyncEnumerable();
 
             await foreach (var v in vehicles) { yield return v; }
         }

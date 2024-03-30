@@ -16,14 +16,17 @@ namespace Api.Data
             SaveChanges();
         }
 
-        public void PopulateDb()
+        public void PopulateDb(IConfiguration config)
         {
-            foreach(var i in Enumerable.Range(1, Random.Shared.Next(1, 101))) {
+            var maxNumberOfVehicles = config.GetValue<int>("MaxNumberOfVehicles", 1);
+            var maxNumberOfPointsPerVehicle = config.GetValue<int>("MaxNumberOfPointsPerVehicle", 1);
+
+            foreach(var i in Enumerable.Range(1, Random.Shared.Next(1, maxNumberOfVehicles + 1))) {
                 var vehicle = new Vehicle { Id = Guid.NewGuid(), Name = $"V{i}" };
 
                 Vehicles.Add(vehicle);
 
-                foreach (var j in Enumerable.Range(1, Random.Shared.Next(1, 1001)))
+                foreach (var j in Enumerable.Range(1, Random.Shared.Next(1, maxNumberOfPointsPerVehicle + 1)))
                 {
                     var coordinate = new Coordinate
                     {

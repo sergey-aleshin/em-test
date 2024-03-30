@@ -27,9 +27,11 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<ApiDbContext>();
+    var config = services.GetRequiredService<IConfiguration>();
+
     context.Database.EnsureCreated();
     context.ResetDb();
-    context.PopulateDb();
+    context.PopulateDb(config);
 }
 
 app.UseHttpsRedirection();
