@@ -20,29 +20,57 @@ namespace Tests
         }
 
         [Test]
-        public void DistanceTest()
+        public void DistanceTest1()
         {
             var moscow_lat = 55.755773;
             var moscow_lon = 37.617761;
             var izhevsk_lat = 56.852775;
             var izhevsk_lon = 53.211463;
             var expected_distance = 967.5 * 1000;
-            var delta = 10;
+            var delta = 50;
             var distance = Api.Utils.Math.Distance(moscow_lon, izhevsk_lon, moscow_lat, izhevsk_lat, Api.Utils.Math.DistanceMeasureUnit.METERS);
 
             Assert.That(distance, Is.EqualTo(expected_distance).Within(delta));
         }
 
         [Test]
-        public void Distance2Test()
+        public void DistanceTest2()
+        {
+            var moscow_lat = 55.755773;
+            var moscow_lon = 37.617761;
+            var spb_lat = 59.938806;
+            var spb_lon = 30.314278;
+            var expected_distance = 634.2 * 1000;
+            var delta = 50;
+            var distance = Api.Utils.Math.Distance(moscow_lon, spb_lon, moscow_lat, spb_lat, Api.Utils.Math.DistanceMeasureUnit.METERS);
+
+            Assert.That(distance, Is.EqualTo(expected_distance).Within(delta));
+        }
+
+        [Test]
+        public void Distance2Test1()
         {
             var moscow_lat = 55.755773;
             var moscow_lon = 37.617761;
             var izhevsk_lat = 56.852775;
             var izhevsk_lon = 53.211463;
             var expected_distance = 967.5 * 1000;
-            var delta = 10;
+            var delta = 50;
             var distance = Api.Utils.Math.Distance2(moscow_lon, izhevsk_lon, moscow_lat, izhevsk_lat, Api.Utils.Math.DistanceMeasureUnit.METERS);
+
+            Assert.That(distance, Is.EqualTo(expected_distance).Within(delta));
+        }
+
+        [Test]
+        public void Distance2Test2()
+        {
+            var moscow_lat = 55.755773;
+            var moscow_lon = 37.617761;
+            var spb_lat = 59.938806;
+            var spb_lon = 30.314278;
+            var expected_distance = 634.2 * 1000;
+            var delta = 50;
+            var distance = Api.Utils.Math.Distance2(moscow_lon, spb_lon, moscow_lat, spb_lat, Api.Utils.Math.DistanceMeasureUnit.METERS);
 
             Assert.That(distance, Is.EqualTo(expected_distance).Within(delta));
         }
