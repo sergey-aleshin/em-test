@@ -1,10 +1,10 @@
 ﻿namespace Api.Messaging
 {
-    public class Coordinate(Guid id, string name, double latitude, double longitude, long timestamp)
+    public class Coordinate(Guid vehicleId, string vehicleName, double latitude, double longitude, long timestamp)
     {
-        public Guid vehicleId { get; set; } = id;
+        public Guid VehicleId { get; set; } = vehicleId;
 
-        public string vehicleName { get; set; } = name;
+        public string VehicleName { get; set; } = vehicleName;
 
         public double Latitude { get; set; } = latitude;
         

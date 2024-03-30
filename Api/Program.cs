@@ -1,4 +1,5 @@
 using Api.Data;
+using Api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ builder.Services.Configure<RouteOptions>(options =>
 });
 
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
-
+builder.Services.AddScoped<ICoordinatesService, CoordinatesService>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
