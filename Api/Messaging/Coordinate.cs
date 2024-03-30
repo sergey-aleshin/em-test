@@ -2,9 +2,9 @@
 {
     public class Coordinate(Guid id, string name, double latitude, double longitude, long timestamp)
     {
-        public Guid Id { get; set; } = id;
+        public Guid vehicleId { get; set; } = id;
 
-        public string Name { get; set; } = name;
+        public string vehicleName { get; set; } = name;
 
         public double Latitude { get; set; } = latitude;
         
