@@ -18,18 +18,18 @@ namespace Api.Data
 
         public void PopulateDb()
         {
-            foreach(var i in Enumerable.Range(1, Random.Shared.Next(1, 100))) {
+            foreach(var i in Enumerable.Range(1, Random.Shared.Next(1, 101))) {
                 var vehicle = new Vehicle { Id = Guid.NewGuid(), Name = $"V{i}" };
 
                 Vehicles.Add(vehicle);
 
-                foreach (var j in Enumerable.Range(1, Random.Shared.Next(1, 1000)))
+                foreach (var j in Enumerable.Range(1, Random.Shared.Next(1, 1001)))
                 {
                     var coordinate = new Coordinate
                     {
-                        Latitude = 0,
-                        Longitude = 0,
-                        Timestamp = j * 3,
+                        Latitude = Utils.Math.GetRandomLatitude(),
+                        Longitude = Utils.Math.GetRandomLongitude(),
+                        Timestamp = (j - 1) * 3,
                         VehicleId = vehicle.Id
                     };
 

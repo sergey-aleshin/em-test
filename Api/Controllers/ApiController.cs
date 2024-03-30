@@ -25,7 +25,7 @@ namespace Api.Controllers
                 .OrderBy(v => v.Name)
                 .Select(v => new Messaging.Vehicle(v.Id, v.Name)).AsAsyncEnumerable();
 
-            await foreach(var v in vehicles) { yield return v; }
+            await foreach (var v in vehicles) { yield return v; }
         }
     }
 }
