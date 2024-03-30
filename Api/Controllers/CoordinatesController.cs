@@ -23,7 +23,7 @@ namespace Api.Controlers
             var coordinates = _context.Coordinates
                 .Where(c => ids.Contains(c.VehicleId))
                 .OrderBy(c => c.Vehicle.Name).ThenByDescending(c => c.Timestamp)
-                .Select(c => new Messaging.Coordinate(c.VehicleId, c.Latitude, c.Longitude, c.Timestamp))
+                .Select(c => new Messaging.Coordinate(c.VehicleId, c.Vehicle.Name, c.Latitude, c.Longitude, c.Timestamp))
                 .AsAsyncEnumerable();
 
             await foreach (var c in coordinates) { yield return c; }
