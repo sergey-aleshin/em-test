@@ -103,7 +103,7 @@ namespace Tests
 
         [Test]
         public async Task TestCoordinatesCalculatePath() {
-            var response = await GetVehiclesResponse();;
+            var response = await GetVehiclesResponse();
 
             Assert.That(response, Is.Not.Null);
             Assert.That(response.IsSuccessStatusCode, Is.True);
