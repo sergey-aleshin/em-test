@@ -14,6 +14,8 @@ cd Tests
 dotnet test
 ```
 
+Api should be running already.
+
 # Used resources
 
 All distance calculation knowledge is obtained from the Wikipedia, from this StackOverflow question (https://stackoverflow.com/questions/58732238/) and from the https://www.movable-type.co.uk/scripts/latlong.html. 
