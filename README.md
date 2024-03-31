@@ -8,13 +8,12 @@ dotnet run
 You can open http://localhost:5007/swagger/index.html in browser to see how API works.
 
 # How to test
+Api should be running already before tests execution.
 
 ```
 cd Tests
 dotnet test
 ```
-
-Api should be running already.
 
 # Used resources
 
