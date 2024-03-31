@@ -1,8 +1,8 @@
 ﻿namespace Api.Messaging {
-    public class VehicleStats(double distanceInMeters, double distanceInMiles)
+    public class VehicleStats(double meters, double miles)
     {
-            public double Meters { get; set; } = distanceInMeters;
+            public double Meters { get; set; } = meters;
 
-            public double Miles { get; set; } = distanceInMiles;
+            public double Miles { get; set; } = miles;
     }
 }
