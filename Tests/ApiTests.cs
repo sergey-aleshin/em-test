@@ -64,12 +64,12 @@ namespace Tests
         [Test]
         public async Task TestVehicles()
         {
-            var response = await GetVehiclesResponse();
+            var vehicleResponse = await GetVehiclesResponse();
 
-            Assert.That(response, Is.Not.Null);
-            Assert.That(response.IsSuccessStatusCode, Is.True);
+            Assert.That(vehicleResponse, Is.Not.Null);
+            Assert.That(vehicleResponse.IsSuccessStatusCode, Is.True);
 
-            var vehicles = await GetVehiclesData(response);
+            var vehicles = await GetVehiclesData(vehicleResponse);
 
             Assert.That(vehicles, Is.Not.Null);
             Assert.That(vehicles, Is.Not.Empty);
@@ -78,12 +78,12 @@ namespace Tests
         [Test]
         public async Task TestCoordinatesFind() {
             
-            var response = await GetVehiclesResponse();;
+            var vehicleResponse = await GetVehiclesResponse();;
 
-            Assert.That(response, Is.Not.Null);
-            Assert.That(response.IsSuccessStatusCode, Is.True);
+            Assert.That(vehicleResponse, Is.Not.Null);
+            Assert.That(vehicleResponse.IsSuccessStatusCode, Is.True);
 
-            var vehicles = await GetVehiclesData(response);
+            var vehicles = await GetVehiclesData(vehicleResponse);
             
             Assert.That(vehicles, Is.Not.Null);
             Assert.That(vehicles, Is.Not.Empty);
@@ -102,13 +102,45 @@ namespace Tests
         }
 
         [Test]
+        public async Task TestCoordinatesFind_EmptyParameters()
+        {
+            var vehicleIds = Array.Empty<Guid>();
+
+            var findResponse = await GetFindResponse(vehicleIds);
+
+            Assert.That(findResponse, Is.Not.Null);
+            Assert.That(findResponse.IsSuccessStatusCode, Is.True);
+
+            var coordinates = await GetFindData(findResponse);
+
+            Assert.That(coordinates, Is.Not.Null);
+            Assert.That(coordinates, Is.Empty);
+        }
+
+        [Test]
+        public async Task TestCoordinatesFind_WrongParameters()
+        {
+            var vehicleIds = new Guid[] { Guid.NewGuid(), Guid.NewGuid() };
+
+            var findResponse = await GetFindResponse(vehicleIds);
+
+            Assert.That(findResponse, Is.Not.Null);
+            Assert.That(findResponse.IsSuccessStatusCode, Is.True);
+
+            var coordinates = await GetFindData(findResponse);
+
+            Assert.That(coordinates, Is.Not.Null);
+            Assert.That(coordinates, Is.Empty);
+        }
+
+        [Test]
         public async Task TestCoordinatesCalculatePath() {
-            var response = await GetVehiclesResponse();
+            var vehicleResponse = await GetVehiclesResponse();
 
-            Assert.That(response, Is.Not.Null);
-            Assert.That(response.IsSuccessStatusCode, Is.True);
+            Assert.That(vehicleResponse, Is.Not.Null);
+            Assert.That(vehicleResponse.IsSuccessStatusCode, Is.True);
 
-            var vehicles = await GetVehiclesData(response);
+            var vehicles = await GetVehiclesData(vehicleResponse);
             
             Assert.That(vehicles, Is.Not.Null);
             Assert.That(vehicles, Is.Not.Empty);
@@ -136,6 +168,22 @@ namespace Tests
             Assert.That(vehicleMap, Is.Not.Empty);
 
             //TestContext.Progress.WriteLine(JsonSerializer.Serialize(vehicleMap));
+        }
+
+        [Test]
+        public async Task TestCoordinatesCalculatePath_EmptyParameters()
+        {
+            var coordinates = Array.Empty<Coordinate>();
+
+            var calcResponse = await GetCalcResponse(coordinates);
+
+            Assert.That(calcResponse, Is.Not.Null);
+            Assert.That(calcResponse.IsSuccessStatusCode, Is.True);
+
+            var vehicleMap = await GetCalcData(calcResponse);
+
+            Assert.That(vehicleMap, Is.Not.Null);
+            Assert.That(vehicleMap, Is.Empty);
         }
     }
 }
