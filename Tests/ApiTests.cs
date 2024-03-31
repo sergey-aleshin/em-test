@@ -69,10 +69,10 @@ namespace Tests
             Assert.That(response, Is.Not.Null);
             Assert.That(response.IsSuccessStatusCode, Is.True);
 
-            var data = await GetVehiclesData(response);
+            var vehicles = await GetVehiclesData(response);
 
-            Assert.That(data, Is.Not.Null);
-            Assert.That(data, Is.Not.Empty);
+            Assert.That(vehicles, Is.Not.Null);
+            Assert.That(vehicles, Is.Not.Empty);
         }
 
         [Test]
@@ -83,14 +83,14 @@ namespace Tests
             Assert.That(response, Is.Not.Null);
             Assert.That(response.IsSuccessStatusCode, Is.True);
 
-            var data = await GetVehiclesData(response);
+            var vehicles = await GetVehiclesData(response);
             
-            Assert.That(data, Is.Not.Null);
-            Assert.That(data, Is.Not.Empty);
+            Assert.That(vehicles, Is.Not.Null);
+            Assert.That(vehicles, Is.Not.Empty);
 
-            var ids = data.Select(v => v.Id).ToArray();
+            var vehicleIds = vehicles.Select(v => v.Id).ToArray();
 
-            var findResponse = await GetFindResponse(ids);
+            var findResponse = await GetFindResponse(vehicleIds);
 
             Assert.That(findResponse, Is.Not.Null);
             Assert.That(findResponse.IsSuccessStatusCode, Is.True);
@@ -108,14 +108,14 @@ namespace Tests
             Assert.That(response, Is.Not.Null);
             Assert.That(response.IsSuccessStatusCode, Is.True);
 
-            var data = await GetVehiclesData(response);
+            var vehicles = await GetVehiclesData(response);
             
-            Assert.That(data, Is.Not.Null);
-            Assert.That(data, Is.Not.Empty);
+            Assert.That(vehicles, Is.Not.Null);
+            Assert.That(vehicles, Is.Not.Empty);
 
-            var ids = data.Select(v => v.Id).ToArray();
+            var vehicleIds = vehicles.Select(v => v.Id).ToArray();
 
-            var findResponse = await GetFindResponse(ids);
+            var findResponse = await GetFindResponse(vehicleIds);
 
             Assert.That(findResponse, Is.Not.Null);
             Assert.That(findResponse.IsSuccessStatusCode, Is.True);
