@@ -13,14 +13,10 @@ namespace Api.Controlers
     [Route("[controller]")]
     public class CoordinatesController
     {
-        private readonly ILogger<CoordinatesController> _logger;
-        private readonly ApiDbContext _context;
         private readonly ICoordinatesService _coordinatesService;
 
-        public CoordinatesController(ILogger<CoordinatesController> logger, ApiDbContext context, ICoordinatesService coordinatesService)
+        public CoordinatesController(ICoordinatesService coordinatesService)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _context = context ?? throw new ArgumentNullException(nameof(context));
             _coordinatesService = coordinatesService ?? throw new ArgumentNullException(nameof(coordinatesService));
         }
 
