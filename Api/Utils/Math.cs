@@ -5,6 +5,9 @@ namespace Api.Utils
 {
     public static class Math
     {
+        public const int EarthRadiusInMeters = 6371000;
+        public const int EarthRadiusInMiles = 3956;
+
         public enum DistanceMeasureUnit
         {
             METERS = 1,
@@ -47,7 +50,7 @@ namespace Api.Utils
                     System.Math.Sin(delta_lambda / 2) * System.Math.Sin(delta_lambda / 2);
             var c = 2 * System.Math.Atan2(System.Math.Sqrt(a), System.Math.Sqrt(1 - a));
 
-            double radius = unit == DistanceMeasureUnit.METERS ? 6371000 : 3956;
+            double radius = unit == DistanceMeasureUnit.METERS ? EarthRadiusInMeters : EarthRadiusInMiles;
             
             var d = radius * c;
 
