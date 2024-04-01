@@ -52,29 +52,6 @@ namespace Api.Utils
             var d = radius * c;
 
             return d;
-        }
-
-        public static double Distance2(double lon1, double lon2, double lat1, double lat2, DistanceMeasureUnit unit)
-        {
-            lon1 = lon1.ToRadians();
-            lon2 = lon2.ToRadians();
-            lat1 = lat1.ToRadians();
-            lat2 = lat2.ToRadians();
-            //haversine formula
-            double dlat, dlon;
-            dlat = lat2 - lat1;
-            dlon = lon2 - lon1;
-            
-            double a = System.Math.Pow(System.Math.Sin(dlat / 2), 2) +
-                System.Math.Cos(lat1) * System.Math.Cos(lat2) *
-                System.Math.Pow(System.Math.Sin(dlon / 2), 2);
-            double c = 2 * System.Math.Asin(System.Math.Sqrt(a));
-            
-            // earths radius is 6371KM, use 3956 for miles
-
-            double radius = unit == DistanceMeasureUnit.METERS ? 6371000 : 3956;
-            
-            return (c * radius);
         }        
     }
 }
